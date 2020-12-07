@@ -306,7 +306,7 @@ svm_CV_fun<-function(data,cv.1=c(5,10),g.max,g.min,c.max,c.min){
     Sn[i]<-TP[i]/(TP[i]+FN[i])
     Sp[i]<-TN[i]/(TN[i]+FP[i])
     F_measure[i]<-(2*TP[i])/(2*TP[i]+FN[i]+FP[i])
-    Pre[i]<-Sn[i]/(Sn[i]+0.07*(1-Sp[i]))
+    Pre[i]<-TP[i]/(TP[i]+FP[i])
     ACC[i] <- (TP[i]+TN[i])/(TP[i]+TN[i]+FP[i]+FN[i])
     MCC[i]<-(TP[i]*TN[i]-FP[i]*FN[i])/sqrt((TP[i]+FP[i])*(TP[i]+FN[i])*(TN[i]+FP[i])*(TN[i]+FN[i]))
     Confusion_Matrix<-Confusion_Matrix[,-3]
@@ -398,7 +398,7 @@ TN <- sum(nrow(filter(Confusion_Matrix,Class_21==-1&y.pred==0)))
 Sn<-TP/(TP+FN)
 Sp<-TN/(TN+FP)
 F_measure<-(2*TP)/(2*TP+FN+FP)
-Pre<-Sn/(Sn+0.07*(1-Sp))
+Pre<-TP/(TP+FP)
 ACC <- (TP+TN)/(TP+TN+FP+FN)
 MCC<-(TP*TN-FP*FN)/sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))
 Confusion_Matrix<-Confusion_Matrix[,-3]
