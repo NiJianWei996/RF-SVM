@@ -1,0 +1,1 @@
+RF-SVM is established based on R software. Please call "load ('RF-SVM_Predictor.RData')" when using RF-SVM.
